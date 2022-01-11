@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 
-const Conn = () => {
-  mongoose.connect(process.env.DB_URI, {
+const Conn = (url, user, pass, data) => {
+  mongoose.connect(`${url}/${data}`, {
+    user: user,
+    pass: pass,
     useNewUrlParser: true
   }).then(() => {
-    console.log('Banco conectado');
+    console.log('MONGO DB CONECTADO')
   }).catch((err) => {
-    return console.log(`Erro na conexão do banco ${err}`)
-  });
-};
+    return console.log(`Erro na conexao com o banco: ${err}`)
+  })
+}
 
 module.exports = Conn;
