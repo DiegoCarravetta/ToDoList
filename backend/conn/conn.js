@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Conn = () => {
-  mongoose.connect('mongodb://localhost:27017/todolist', {
+  mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true
   }).then(() => {
     console.log('Banco conectado');
